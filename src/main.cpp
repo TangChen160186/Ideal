@@ -1,9 +1,18 @@
-#include <iostream>
+#include "Interface/IApplication.hpp"
+namespace IDEAL {
+extern IApplication * app ;
+}
+int main(int argc, char **argv) {
+  int ret;
 
-using namespace std;
+  if ((ret = IDEAL::app->Init()) != 0) {
 
-int main(int argc, char** argv)
-{
-    cout << "hello world!" << endl;
-    return 0;
+    return ret;
+  }
+
+  while (!IDEAL::app->IsQuit()) {
+    IDEAL::app->Tick();
+  }
+
+  IDEAL::app->Finalize();
 }

@@ -2,8 +2,10 @@ add_rules("mode.debug", "mode.release")
 
 target("Ideal")
     set_kind("binary")
-    add_files("src/*.cpp")
-
+    add_files("src/*.cpp","src/**.cpp")
+    add_includedirs("./src/FrameWork/")
+    set_languages("c99", "c++20")
+target_end()
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
 --
